@@ -16,16 +16,16 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use Node
         uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '18'
 
-      - uses: pnpm/action-setup@v2.1.0
+      - uses: pnpm/action-setup@v2
         with:
-          version: 7.1.0
+          version: 8
           run_install: true
 
       - name: Build documentation
@@ -38,3 +38,4 @@ jobs:
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_LIVE_URL: https://use-gesture.netlify.app/
